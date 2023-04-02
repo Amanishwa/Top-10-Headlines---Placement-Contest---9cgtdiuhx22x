@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://gnews.io/api/v4/top-headlines?category=general&apikey=bcbe08a5e529efa2f4960c432d0a5f0b&max=10&lang=en')
+    fetch('https://gnews.io/api/v4/top-headlines?category=general&apikey=bcbe08a5e529efa2f4960c432d0a5f0b&max=10&lang=en&category=')
     .then((response)  => response.json())
     .then((data) => {
       setNewsData(data.articles);
