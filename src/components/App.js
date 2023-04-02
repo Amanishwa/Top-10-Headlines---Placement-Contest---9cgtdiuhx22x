@@ -4,7 +4,7 @@ import '../styles/App.css';
 const App = () => {
   const [category, setCategory] = useState("general");
   const [newsData, setNewsData] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -14,10 +14,8 @@ const App = () => {
       setNewsData(data.articles);
       setLoading(false);
     })
-    .catch((error) =>{
-      console.log(error);
-      setLoading(false);
-    });
+    .catch(error =>
+      console.log(error));
     }, [category]);
     const handleCategoryChange =(event) =>{
       setCategory(event.target.value);
