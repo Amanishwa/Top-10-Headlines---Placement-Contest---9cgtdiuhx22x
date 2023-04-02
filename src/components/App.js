@@ -39,9 +39,9 @@ const App = () => {
       <ol className='news-list'>
         {newsData.map((news, index) =>(
         <li key={index}>
-          <img className='news-img' src={newsData.image} alt=""/>
+          <img className='news-img' src={news.image} alt=""/>
           <section className='new-title-content-author'>
-            <h3 className='news-title'>{newsData.title}</h3>
+            <h3 className='news-title'>{news.title}</h3>
             <section className='new-content-author'>
               <p className='news-description'>{news.description}</p>
               <p className='news-source'><strong>Source:</strong> {news.source.name}</p>
