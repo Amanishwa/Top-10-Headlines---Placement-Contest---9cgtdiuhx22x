@@ -5,10 +5,15 @@ const App = () => {
   const [category, setCategory] = useState("general");
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [API_KEY] = useState('bcbe08a5e529efa2f4960c432d0a5f0b');
+  const [API_URL] = useState(
+    'https://gnews.io/api/v4/top-headlines?apikey=${API_KEY}&max=10&lang=en&category='
+    );
+    
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://gnews.io/api/v4/top-headlines?category=general&apikey=bcbe08a5e529efa2f4960c432d0a5f0b&max=10&lang=en&category=')
+    fetch('${API_KEY}&{category}')
     .then((response)  => response.json())
     .then((data) => {
       setNewsData(data.articles);
@@ -16,9 +21,10 @@ const App = () => {
     })
     .catch(error =>
       console.log(error));
-    }, [category]);
+    }, [category, API_URL]);
     const handleCategoryChange =(event) =>{
-      setCategory(event.target.value);
+     const newCategory = event.target.value;
+      setCategory(newCategory);
     };
 
   return (
